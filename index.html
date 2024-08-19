@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        .box{
+            height: 100vh;
+            background-color:rgb(11, 186, 244);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url(./photo-1464618663641-bbdd760ae84a\ \(1\).avif);
+            background-size: 100% 100%;
+        }
+.child{
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    background-image:url(./photo-1558486012-817176f84c6d.avif);
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+}
+.temperature{
+    text-align: center;
+font-size: 2rem;
+color:white;
+margin-bottom: 0;
+}
+.hta{
+    text-align: center;
+    color: white;
+    
+}
+.plac{
+    
+    text-align: center;
+    margin-top: 15px;
+
+}
+.childs{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1rem;
+    margin-top: 25px;
+    
+}
+.childe{
+    
+    display: flex;
+    justify-content: space-evenly;
+    
+    
+}
+img{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+    </style>
+</head>
+
+<div class="box">
+    <div class="child">
+        <img src="" alt="">
+        <h2 id="htag"class="hta"> <ion-icon name="cloudy-night-outline"></ion-icon> Weather App </h2>
+        <p id="temp"class="temperature"></p>
+        <img id="images" src="" alt="">
+        <p id="place"class="plac"></p>
+        <div class="childs">
+            <p id="hum" class="humid"></p>
+            <p id="like" class="feels_like"></p></div>
+         <div class="childe">  <p id="min" class="minim"></p>
+            <p id="maxi" class="maxii"></p>
+      </div>  
+    </div>
+</div>
+<body><script>
+       let data={
+    "coord": {
+        "lon": 80.1246,
+        "lat": 12.9334
+    },
+    "weather": [
+        {
+            "id": 802,
+            "main": "Clouds",
+            "description": "scattered clouds",
+            "icon": "03n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 30.83,
+        "feels_like": 37.83,
+        "temp_min": 30.44,
+        "temp_max": 30.98,
+        "pressure": 1009,
+        "humidity": 79
+    },
+    "visibility": 6000,
+    "wind": {
+        "speed": 3.6,
+        "deg": 130
+    },
+    "clouds": {
+        "all": 40
+    },
+    "dt": 1715708449,
+    "sys": {
+        "type": 1,
+        "id": 9218,
+        "country": "IN",
+        "sunrise": 1715645670,
+        "sunset": 1715691441
+    },
+    "timezone": 19800,
+    "id": 1465868,
+    "name": "Vengavasal",
+    "cod": 200
+}
+   console.log(data)
+   
+
+
+
+
+ let ptag=document.getElementById("temp");
+ ptag.textContent=`${Math.round(data.main.temp)}°C`;
+ 
+ let img=document.getElementById("images");
+ img.src=` https://openweathermap.org/img/wn/${data.weather[0].id}.png`
+
+  let places=document.getElementById('place');
+  places.innerHTML=`<ion-icon name="location-outline"></ion-icon>${data.name}`;
+
+let humi=document.getElementById('hum');
+humi.innerHTML=`Humidity: ${data.main.humidity}%`;
+
+let feel=document.getElementById('like');
+feel.innerHTML=`Feels-Like: ${data.main.feels_like}°C`;
+
+let mims=document.getElementById("min");
+mims.innerHTML=`<ion-icon name="arrow-down-outline"></ion-icon> Max: ${data.main.temp_max}°C`;
+
+let max=document.getElementById("maxi");
+max.innerHTML=`<ion-icon name="arrow-up-outline"></ion-icon> Min: ${data.main.temp_min}°C`;
+
+</script>
+</body>
+</html>
